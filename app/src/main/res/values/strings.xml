@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HyperOS OTA Blocker</string>
+    <string name="module_description">按已验证的更新应用版本控制 OTA 操作</string>
+</resources>
