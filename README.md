@@ -2,6 +2,13 @@
 
 Kotlin / Jetpack Compose Material 3 设置应用与 LSPosed Modern API 102 模块。所有开关默认关闭。
 
+## 0.1.0 版本要求
+
+- **系统**。当前仅适配小米 15 Ultra（`xuanyuan`）的 HyperOS `OS4.0.3.0.XOACNXM`，Android 17。模块会核对完整系统构建指纹。
+- **系统更新器**。仅适配 `com.android.updater` **9.7.5（975）** 的指定 APK。模块同时校验 APK 的 SHA-256，因此相同版本号也需要 APK 内容一致。
+- **LSPosed**。框架需支持 **Modern Xposed API 102**，已确认 LSPosed **2.2.1（7912）** 提供该 API。在管理器中启用模块，作用域仅选择 `com.android.updater`，然后重新打开模块设置页。
+- **开关变灰**。原厂预装的更新器 **9.7.4（974）** 尚未适配。即使系统构建匹配、LSPosed 已连接，安装了 9.7.4 的设备仍会显示「未适配此构建」，拦截开关不可用。其他未匹配的构建或更新器也会受到同样限制。
+
 ## 小米 15 Ultra 静态适配
 
 本次通过已授权的 ADB 读取真机并拉取当前更新器 APK，使用 Android SDK 的 `aapt2` 和 `dexdump` 检查清单、签名级别权限、方法描述符与调用分支。此版本的 Hook 仍需经过真机执行测试。
@@ -71,5 +78,6 @@ adb devices -l
 
 macOS arm64，JDK 17.0.16，Gradle 8.11.1。已完成 `assembleDebug` 和 `testDebugUnitTest`，5 项 JUnit 测试全部通过。APK 已通过 `apksigner verify`，并检查了 Modern API 102 的入口、固定作用域与包名。实际 Hook 执行、开关跨进程传播及重启恢复仍待用户授权后的真机测试。
 
-- APK 文件名 `HyperOS-OTA-Blocker-debug.apk`
-- SHA-256 `254c94ec730ae1625799d41495e90c4249c1d391992ec22f27af83bf12bfef8c`
+- 早期调试版的包名为 `dev.ota.blocker`。
+- LSPosed 投稿版的包名为 `io.github.iammaplezeng.hyperosotablocker`，版本为 `0.1.0`（版本代码 `1`）。Android 会将它作为独立应用安装，其开关和 LSPosed 作用域需要重新设置。
+- 投稿 APK 文件名为 `HyperOS-OTA-Blocker-0.1.0-release.apk`，SHA-256 为 `2d4afeac51f190ae09ac0acf68e66de527e2344044388f8a79fed0ace1f34123`。投稿版已通过 APK 签名校验。离线打包时跳过了缺少依赖的 Release Lint。
