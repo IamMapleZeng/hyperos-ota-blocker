@@ -9,7 +9,7 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "dev.ota.blocker"
+        applicationId = "io.github.iammaplezeng.hyperosotablocker"
         minSdk = 29
         targetSdk = 35
         versionCode = 1
