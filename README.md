@@ -1,5 +1,7 @@
 # HyperOS OTA Blocker
 
+**简体中文** · [English](README.en.md)
+
 Kotlin / Jetpack Compose Material 3 设置应用与 LSPosed Modern API 102 模块。所有开关默认关闭。
 
 ## 0.1.0 版本要求
